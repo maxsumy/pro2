@@ -1,3 +1,21 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url(./fonts/Montserrat-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'MontserratSemiBold';
+    src: local('MontserratSemiBold'), url(./fonts/Montserrat-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'MontserratMedium';
+    src: local('MontserratMedium'), url(./fonts/Montserrat-Medium.ttf) format('truetype');
+}
+
+
 * {
     box-sizing: border-box;
 }
+
+
