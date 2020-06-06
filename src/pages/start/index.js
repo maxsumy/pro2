@@ -1,8 +1,70 @@
 import React from "react";
+import {useState, useEffect} from 'react';
 import "./start.css";
 
 
 const Start = ()=>{
+    const [lost, setValueLost] = useState("I lost my pet!");
+    const [found, setValueFound] = useState("I found a pet!");
+    const [name_fl, setValueName_fl] = useState(true);
+    const [password_fl, setValuePassword_fl] = useState(true);
+    const [opSingIn, setopSingIn] = useState({
+       opacity: 0.28,
+    });
+    const [opSingUp, setopSingUp] = useState({
+        opacity: 1,
+    });
+
+
+    const onMouseOverLost =  () =>{
+        setValueLost("Click to find!");
+    }
+
+    const onMouseOverFound =  () =>{
+        setValueFound("What to do?");
+    }
+
+    const onMouseOutLost =  () =>{
+        setValueLost("I lost my pet!");
+    }
+
+    const onMouseOutFound =  () =>{
+        setValueFound("I found a pet!");
+    }
+
+    const singIn = ()=>{
+        setValueName_fl(false);
+        setValuePassword_fl(false);
+
+        setopSingIn({
+                ...opSingIn,
+                opacity: 1,
+            });
+
+        setopSingUp({
+            ...opSingUp,
+            opacity: 0.28,
+        });
+
+    }
+
+
+
+    const singUp = ()=>{
+        setValueName_fl(true);
+        setValuePassword_fl(true);
+
+        setopSingUp({
+            ...opSingUp,
+            opacity: 1,
+        });
+
+        setopSingIn({
+            ...opSingIn,
+            opacity: 0.28,
+        });
+    }
+
     return (
         <div>
 
@@ -15,7 +77,7 @@ const Start = ()=>{
                                     <a href="#"><img src={require("./images/propets_logo.svg")} alt="logo"/></a>
                                 </div>
                                 <div>
-                                    <button className="sing_in_btn">Sign in</button>
+                                    <button className="sing_in_btn" >Sign in</button>
                                 </div>
                             </div>
 
@@ -33,11 +95,11 @@ const Start = ()=>{
                                 <p><span className="text1-green">pawfessional</span></p>
                                 <p>community</p>
                             </div>
-                            <div className="text2">
-                                I lost my pet!
+                            <div className="text2" onMouseOver={onMouseOverLost} onMouseOut={onMouseOutLost}>
+                                {lost}
                             </div>
-                            <div className="text3">
-                                I found a pet!
+                            <div className="text3" onMouseOver={onMouseOverFound} onMouseOut={onMouseOutFound}>
+                                {found}
                             </div>
                             <div className="text4">
                                 I’m okay, just want to <a href="#" className="join">JOIN</a> the pawsome community!
@@ -130,6 +192,70 @@ const Start = ()=>{
                     </div>
                 </div>
 
+            </div>
+
+            <div className="sing">
+                <div className="sing-container">
+
+                    <div className="sing-header">
+                        <div className="sing-logo"><a href="#"><img src={require("./images/sing/propets_logo.svg")} alt="logo"/></a></div>
+                        <div className="X">X</div>
+                    </div>
+
+                    <div className="sing-text">
+                        Welcome! Please sign in / sign up to continue
+                    </div>
+
+                    <div className="sing-buttons">
+
+                        <div className="sing-button1"  onClick={singUp} style={opSingUp}>Sign up</div>
+                        <div className="sing-button2" onClick={singIn} style={opSingIn}>Sign in</div>
+                    </div>
+
+                    <div className="input-group-sing">
+                        <form>
+
+                            {name_fl && (
+                                <div>
+                                    <label className="label1">Name</label>
+                                    <input className="label-sing" type="text" name="name" />
+                                </div>
+                            )
+
+                            }
+
+                            <div>
+                                <label className="label2">Email</label>
+                                <input className="label-sing" type="text" name="email"/>
+                            </div>
+                            <div>
+                                <label>Password</label>
+                                <input className="label-sing" type="password" name="pwd1"/>
+                            </div>
+
+                            {password_fl && (
+                                <div>
+                                    <label>Password</label>
+                                    <input className="label-sing" type="password" name="pwd2"/>
+                                </div>)
+                            }
+
+
+
+                            <div>
+                                <button className="form-button-cancel" type="cancel" >Cancel</button>
+                                <button className="form-button-submit" type="submit" >Submit</button>
+                            </div>
+
+
+                        </form>
+
+                      </div>
+
+
+
+
+                    </div>
             </div>
 
 
